@@ -1,12 +1,14 @@
 import React from "react";
-import Forma from "../Forma/Forma";
-import Statistics from "../Statistic/Statistics";
+// import Forma from "../Forma/Forma";
+// import Statistics from "../Statistic/Statistics";
+import List from "../List/List";
 
 const Body = () => {
   return (
     <main className="flex-auto">
-      <Forma />
-      <Statistics />
+      <List />
+      {/* <Forma />
+      <Statistics /> */}
     </main>
   );
 };
