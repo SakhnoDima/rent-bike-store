@@ -1,9 +1,12 @@
 import React from "react";
 import { Field, Form, Formik } from "formik";
 import uniqid from "uniqid";
-import { SignupSchema, inputStyle } from "../../Constant";
+import { SignupSchema } from "../../Constant";
 import { inputs } from "../../Constant";
 import Button, { ButtonType } from "../Button/Button";
+
+const inputStyle =
+  "w-[235px] h-[29px] px-[16px] py-[5px] bg-gray-color rounded-[5px] placeholder:font-main placeholder:text-sm placeholder:font-normal";
 
 interface IFormInitValues {
   name: string;
@@ -62,7 +65,7 @@ const Forma: React.FC<{}> = () => {
           </div>
           <Field
             as="textarea"
-            className={`my-[10px] ${inputStyle} h-[75px] w-[100%] resize-none`}
+            className={` w-[100%] px-[16px] py-[5px] bg-gray-color rounded-[5px] placeholder:font-main placeholder:text-sm placeholder:font-normal my-[10px] h-[75px] resize-none`}
             name="desc"
             placeholder="Description"
           />
