@@ -8,25 +8,27 @@ const infoStatistics = {
 };
 
 const textStyle = "font-main font-normal text-sm";
+const numberStyle = "font-bold ml-[3px]";
 
 const Statistics: React.FC<{}> = () => {
   return (
     <div className="p-[10px] flex flex-col gap-[5px]">
-      <p className="font-main font-bold text-lg">STATISTICS</p>
       <p className={textStyle}>
-        Total Bikes : <span className="font-bold">{infoStatistics.total}</span>
+        Total Bikes :<span className={numberStyle}>{infoStatistics.total}</span>
       </p>
       <p className={textStyle}>
-        Available Bikes :{" "}
-        <span className="font-bold">{infoStatistics.available}</span>
+        Available Bikes :
+        <span className={numberStyle}>{infoStatistics.available}</span>
       </p>
       <p className={textStyle}>
-        Booked Bikes :{" "}
-        <span className="font-bold">{infoStatistics.booked}</span>
+        Booked Bikes :
+        <span className={numberStyle}>{infoStatistics.booked}</span>
       </p>
       <p className={textStyle}>
-        Average bike cost:{" "}
-        <span className="font-bold">{infoStatistics.average.toFixed(2)}</span>{" "}
+        Average bike cost:
+        <span className={numberStyle}>
+          {infoStatistics.average.toFixed(2)}
+        </span>{" "}
         UAH/hr.
       </p>
     </div>
