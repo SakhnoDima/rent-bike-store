@@ -12,7 +12,7 @@ const numberStyle = "font-bold ml-[3px]";
 
 const Statistics: React.FC<{}> = () => {
   return (
-    <div className="p-[10px] flex flex-col gap-[5px]">
+    <div className="flex flex-col gap-[5px] border-t-[1px] border-[#C4C4C4] pt-[10px]">
       <p className={textStyle}>
         Total Bikes :<span className={numberStyle}>{infoStatistics.total}</span>
       </p>

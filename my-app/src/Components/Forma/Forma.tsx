@@ -39,7 +39,7 @@ const Forma: React.FC<{}> = () => {
       }}
     >
       {({ errors, touched }) => (
-        <Form className="w-[482px]">
+        <Form className="w-[482px] mb-[16px] ">
           <div className="w-[481px] flex flex-wrap gap-x-[11px] gap-y-[10px] ">
             {inputs.map((item) => (
               <div className="relative" key={item.inputName}>
