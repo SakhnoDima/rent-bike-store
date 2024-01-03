@@ -1,12 +1,7 @@
 import React from "react";
 import { ReactComponent as CloseBtn } from "../../SVG/Cls.svg";
 import Select from "react-select";
-import { colourStyles } from "./selectStyles";
-// enum Status {
-//   AVAILABLE = "available",
-//   BUSY = "busy",
-//   UNAVAILABLE = "unavailable",
-// }
+import { colorStyles } from "./selectStyles";
 
 const options = [
   { value: "available", label: "Available" },
@@ -14,7 +9,7 @@ const options = [
   { value: "unavailable", label: "Unavailable" },
 ];
 
-interface ICard {
+export interface ICard {
   name: string;
   type: string;
   color: string;
@@ -66,7 +61,7 @@ export const Card: React.FC<ICard> = ({
           onChange={handleChange}
           options={options}
           defaultValue={options[defaultValueSelect]}
-          styles={colourStyles}
+          styles={colorStyles}
         />
       </div>
 

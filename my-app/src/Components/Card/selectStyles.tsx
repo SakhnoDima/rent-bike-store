@@ -1,6 +1,6 @@
 import { StylesConfig } from "react-select";
 
-export const colourStyles: StylesConfig = {
+export const colorStyles: StylesConfig = {
   control: (styles) => ({
     ...styles,
     backgroundColor: "#E8E8E8",
