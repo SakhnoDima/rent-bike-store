@@ -4,22 +4,15 @@ import uniqid from "uniqid";
 import { SignupSchema } from "../../Constant";
 import { inputs } from "../../Constant";
 import Button, { ButtonType } from "../Button/Button";
+import { useAppDispatch } from "../../hooks/hooks";
+import { addBike } from "../../redux/bikeThunk";
 
 const inputStyle =
   "w-[235px] h-[29px] px-[16px] py-[5px] bg-gray-color rounded-[5px] placeholder:font-main placeholder:text-sm placeholder:font-normal";
 
-interface IFormInitValues {
-  name: string;
-  type: string;
-  color: string;
-  wheelSize: string;
-  price: string;
-  id: string;
-  desc: string;
-}
-
 const Forma: React.FC<{}> = () => {
-  const initialValues: IFormInitValues = {
+  const dispatch = useAppDispatch();
+  const initialValues = {
     name: "",
     type: "",
     color: "",
@@ -32,10 +25,20 @@ const Forma: React.FC<{}> = () => {
     <Formik
       initialValues={initialValues}
       validationSchema={SignupSchema}
-      onSubmit={(values, actions) => {
-        console.log({ values, actions });
+      onSubmit={(values) => {
+        dispatch(
+          addBike({
+            name: values.name,
+            type: values.type,
+            color: values.color,
+            id: values.id,
+            price: +Number(values.price).toFixed(2),
+            wheelSize: Number(values.wheelSize),
+            description: values.desc,
+          })
+        );
 
-        actions.setSubmitting(false);
+        // actions.setSubmitting(false);
       }}
     >
       {({ errors, touched }) => (
