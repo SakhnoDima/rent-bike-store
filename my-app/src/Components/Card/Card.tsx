@@ -2,6 +2,9 @@ import React from "react";
 import { ReactComponent as CloseBtn } from "../../SVG/Cls.svg";
 import Select from "react-select";
 import { colorStyles } from "./selectStyles";
+import { ICard } from "../../dto/dto";
+import { useAppDispatch } from "../../hooks/hooks";
+import { removeBike } from "../../redux/bikeThunk";
 
 const options = [
   { value: "available", label: "Available" },
@@ -9,30 +12,27 @@ const options = [
   { value: "unavailable", label: "Unavailable" },
 ];
 
-export interface ICard {
-  name: string;
-  type: string;
-  color: string;
-  id: string;
-  status: string;
-  price: number;
-}
-
 export const Card: React.FC<ICard> = ({
   name,
   type,
   color,
   id,
+  _id,
   status,
   price,
 }) => {
+  const dispatch = useAppDispatch();
+
+  //? initial styles for selector
   const defaultValueSelect = (() => {
     return options.findIndex((item) => item.value === status);
   })();
 
-  const handleChange = (selectOptions: any) => {
-    console.log(id, selectOptions);
+  const onCloseClick = () => {
+    dispatch(removeBike(_id));
   };
+
+  const handleChange = (selectOptions: any) => {};
 
   return (
     <div
@@ -69,7 +69,7 @@ export const Card: React.FC<ICard> = ({
         {price} UAH/hr.
       </p>
       <button
-        onClick={() => console.log("Close")}
+        onClick={onCloseClick}
         className="absolute right-[12px] top-[12px] hover:scale-150"
       >
         <CloseBtn />
