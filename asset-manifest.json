@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ADMIN-BIKE/static/css/main.2f664fa0.css",
-    "main.js": "/ADMIN-BIKE/static/js/main.c6a80869.js",
+    "main.js": "/ADMIN-BIKE/static/js/main.85d72082.js",
     "index.html": "/ADMIN-BIKE/index.html",
     "static/media/Cls.svg": "/ADMIN-BIKE/static/media/Cls.a8268ae7b01879f0f9b828e6fda6978b.svg",
     "main.2f664fa0.css.map": "/ADMIN-BIKE/static/css/main.2f664fa0.css.map",
-    "main.c6a80869.js.map": "/ADMIN-BIKE/static/js/main.c6a80869.js.map"
+    "main.85d72082.js.map": "/ADMIN-BIKE/static/js/main.85d72082.js.map"
   },
   "entrypoints": [
     "static/css/main.2f664fa0.css",
-    "static/js/main.c6a80869.js"
+    "static/js/main.85d72082.js"
   ]
 }
