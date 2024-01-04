@@ -1,6 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { ICard } from "../Components/Card/Card";
-import { getBikesList } from "./bikeThunk";
+import { AnyAction, PayloadAction, createSlice } from "@reduxjs/toolkit";
+
+import { addBike, getBikesList, getStatistics, removeBike } from "./bikeThunk";
+import { ICard } from "../dto/dto";
 
 type IInitState = {
   statistics: {
@@ -37,11 +38,44 @@ export const bikeSlice = createSlice({
         state.error = null;
       })
       .addCase(getBikesList.fulfilled, (state, action) => {
-        console.log(11);
         state.list = [...action.payload];
+        state.isLoading = false;
+      })
+      .addCase(addBike.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(addBike.fulfilled, (state, action) => {
+        state.list.unshift(action.payload);
+        state.isLoading = false;
+      })
+      .addCase(removeBike.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(removeBike.fulfilled, (state, action) => {
+        state.list = state.list.filter(
+          (bike) => bike._id !== action.payload._id
+        );
+        state.isLoading = false;
+      })
+      .addCase(getStatistics.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getStatistics.fulfilled, (state, action) => {
+        state.statistics = action.payload;
+        state.isLoading = false;
+      })
+      .addMatcher(isError, (state, action: PayloadAction<string>) => {
+        state.error = action.payload;
         state.isLoading = false;
       });
   },
 });
 
 export const bikeSliceReducer = bikeSlice.reducer;
+
+function isError(action: AnyAction) {
+  return action.type.endsWith("rejected");
+}
