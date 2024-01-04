@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { bikeSliceReducer } from "./bikeSlice";
-// import { useDispatch } from "react-redux";
 
 export const store = configureStore({
   reducer: {
