@@ -1,7 +1,14 @@
 import { AnyAction, PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { addBike, getBikesList, getStatistics, removeBike } from "./bikeThunk";
-import { ICard } from "../dto/dto";
+import {
+  addBike,
+  getBikesList,
+  getStatistics,
+  removeBike,
+  updateBikeStatus,
+} from "./bikeThunk";
+
+import { CustomError, ICard } from "../dto/dto";
 
 type IInitState = {
   statistics: {
@@ -67,8 +74,20 @@ export const bikeSlice = createSlice({
         state.statistics = action.payload;
         state.isLoading = false;
       })
-      .addMatcher(isError, (state, action: PayloadAction<string>) => {
-        state.error = action.payload;
+      .addCase(updateBikeStatus.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(updateBikeStatus.fulfilled, (state, action) => {
+        const array = state.list;
+        const index = array.findIndex(
+          (item) => item._id === action.payload._id
+        );
+        array[index] = action.payload;
+        state.isLoading = false;
+      })
+      .addMatcher(isError, (state, action: PayloadAction<CustomError>) => {
+        state.error = action.payload.response.data.message;
         state.isLoading = false;
       });
   },

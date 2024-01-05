@@ -12,8 +12,6 @@ function App() {
   const { bikesList, error } = useAllSelectors();
   const dispatch = useAppDispatch();
 
-  console.log(error);
-
   useEffect(() => {
     dispatch(getStatistics());
   }, [bikesList, dispatch]);

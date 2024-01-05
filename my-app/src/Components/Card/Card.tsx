@@ -4,7 +4,7 @@ import Select from "react-select";
 import { colorStyles } from "./selectStyles";
 import { ICard } from "../../dto/dto";
 import { useAppDispatch } from "../../hooks/hooks";
-import { removeBike } from "../../redux/bikeThunk";
+import { removeBike, updateBikeStatus } from "../../redux/bikeThunk";
 
 const options = [
   { value: "available", label: "Available" },
@@ -32,7 +32,10 @@ export const Card: React.FC<ICard> = ({
     dispatch(removeBike(_id));
   };
 
-  const handleChange = (selectOptions: any) => {};
+  const handleChange = (selectOptions: any) => {
+    console.log(selectOptions.value, _id);
+    dispatch(updateBikeStatus({ id: _id, status: selectOptions.value }));
+  };
 
   return (
     <div

@@ -1,9 +1,14 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 import { AppDispatch } from "./store";
-import { IFormInitValues, ICard, IStatistics } from "../dto/dto";
+import {
+  IFormInitValues,
+  ICard,
+  IStatistics,
+  IUpdateBikeStatus,
+} from "../dto/dto";
 
 const instance = axios.create({
   baseURL: "https://bike-backend-h9xy.onrender.com/",
@@ -32,7 +37,7 @@ export const addBike = createAsyncThunk<
     const { data } = await instance.post("/bike", bikeInfo);
     return (await data) as ICard;
   } catch (error) {
-    return rejectWithValue((error as Error).message);
+    return rejectWithValue(error as AxiosError);
   }
 });
 
@@ -57,6 +62,21 @@ export const getStatistics = createAsyncThunk<
   try {
     const { data } = await instance.get(`/bike/info`);
     return (await data) as IStatistics;
+  } catch (error) {
+    return rejectWithValue((error as Error).message);
+  }
+});
+
+export const updateBikeStatus = createAsyncThunk<
+  ICard,
+  IUpdateBikeStatus,
+  { rejectValue: string | unknown }
+>("bikes/updateBikeStatus", async (updateInfo, { rejectWithValue }) => {
+  try {
+    const { data } = await instance.patch(`/bike/${updateInfo.id}`, {
+      status: updateInfo.status,
+    });
+    return (await data) as ICard;
   } catch (error) {
     return rejectWithValue((error as Error).message);
   }

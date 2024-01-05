@@ -24,3 +24,16 @@ export interface IStatistics {
   busy: number;
   avg: number;
 }
+
+export interface IUpdateBikeStatus {
+  id: string;
+  status: string;
+}
+
+export interface CustomError {
+  response: {
+    data: {
+      message: string;
+    };
+  };
+}
