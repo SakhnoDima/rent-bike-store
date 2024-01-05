@@ -1,4 +1,4 @@
-import { AnyAction, PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 import {
   addBike,
@@ -9,6 +9,7 @@ import {
 } from "./bikeThunk";
 
 import { CustomError, ICard } from "../dto/dto";
+import { isError } from "../helpers";
 
 type IInitState = {
   statistics: {
@@ -94,7 +95,3 @@ export const bikeSlice = createSlice({
 });
 
 export const bikeSliceReducer = bikeSlice.reducer;
-
-function isError(action: AnyAction) {
-  return action.type.endsWith("rejected");
-}

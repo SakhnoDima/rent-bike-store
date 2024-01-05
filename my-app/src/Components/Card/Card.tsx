@@ -33,8 +33,9 @@ export const Card: React.FC<ICard> = ({
   };
 
   const handleChange = (selectOptions: any) => {
-    console.log(selectOptions.value, _id);
-    dispatch(updateBikeStatus({ id: _id, status: selectOptions.value }));
+    const options = { id: _id, status: selectOptions.value };
+
+    dispatch(updateBikeStatus(options));
   };
 
   return (
