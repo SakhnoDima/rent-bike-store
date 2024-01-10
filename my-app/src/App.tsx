@@ -8,7 +8,7 @@ import { useAllSelectors } from "./hooks/useAllSelectors";
 import { useAppDispatch } from "./hooks/hooks";
 import { getStatistics } from "./redux/bikeThunk";
 
-function App() {
+const App: React.FC = () => {
   const { bikesList, error } = useAllSelectors();
   const dispatch = useAppDispatch();
 
@@ -23,6 +23,6 @@ function App() {
       <Footer />
     </div>
   );
-}
+};
 
 export default App;

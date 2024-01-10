@@ -14,7 +14,7 @@ interface IButton {
 const Button: React.FC<IButton> = ({ type, name }) => {
   return (
     <button
-      className="block w-[235px] bg-bg-prime px-[22px] py-[4px] text-white rounded-[5px]"
+      className="block w-[235px] bg-bg-prime px-[22px] py-[4px] text-white rounded-[5px] hover:scale-[0.9]"
       type={type}
     >
       <p className="font-main font-normal text-sm ">{name}</p>

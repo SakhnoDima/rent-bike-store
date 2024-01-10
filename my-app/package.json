@@ -1,6 +1,6 @@
 {
-  "name": "my-app",
-  "homepage": "https://SakhnoDima.github.io/ADMIN-BIKE/",
+  "name": "rent-bike-store",
+  "homepage": "https://SakhnoDima.github.io/rent-bike-store/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,11 +13,13 @@
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
     "@types/react-redux": "^7.1.33",
+    "@types/react-router-dom": "^5.3.3",
     "@types/uniqid": "^5.3.4",
     "formik": "^2.4.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.0.4",
+    "react-router-dom": "^6.21.1",
     "react-scripts": "5.0.1",
     "react-select": "^5.8.0",
     "typescript": "^4.9.5",
