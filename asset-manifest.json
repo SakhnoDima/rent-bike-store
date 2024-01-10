@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/ADMIN-BIKE/static/css/main.2f664fa0.css",
-    "main.js": "/ADMIN-BIKE/static/js/main.d04e14fd.js",
-    "index.html": "/ADMIN-BIKE/index.html",
-    "static/media/Cls.svg": "/ADMIN-BIKE/static/media/Cls.a8268ae7b01879f0f9b828e6fda6978b.svg",
-    "main.2f664fa0.css.map": "/ADMIN-BIKE/static/css/main.2f664fa0.css.map",
-    "main.d04e14fd.js.map": "/ADMIN-BIKE/static/js/main.d04e14fd.js.map"
+    "main.css": "/rent-bike-store/static/css/main.ca499019.css",
+    "main.js": "/rent-bike-store/static/js/main.ca746b45.js",
+    "index.html": "/rent-bike-store/index.html",
+    "static/media/Cls.svg": "/rent-bike-store/static/media/Cls.a8268ae7b01879f0f9b828e6fda6978b.svg",
+    "main.ca499019.css.map": "/rent-bike-store/static/css/main.ca499019.css.map",
+    "main.ca746b45.js.map": "/rent-bike-store/static/js/main.ca746b45.js.map"
   },
   "entrypoints": [
-    "static/css/main.2f664fa0.css",
-    "static/js/main.d04e14fd.js"
+    "static/css/main.ca499019.css",
+    "static/js/main.ca746b45.js"
   ]
 }
