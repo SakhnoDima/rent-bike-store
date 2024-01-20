@@ -4,10 +4,10 @@ import { RootState } from "../redux/store";
 export const useAllSelectors = () => {
   const bikesList = useAppSelector((state: RootState) => state.bikes.list);
   const isLoading = useAppSelector((state: RootState) => state.bikes.isLoading);
-  const error = useAppSelector((state: RootState) => state.bikes.error);
+  const formError = useAppSelector((state: RootState) => state.bikes.error);
   const statistics = useAppSelector(
     (state: RootState) => state.bikes.statistics
   );
 
-  return { bikesList, isLoading, statistics, error };
+  return { bikesList, isLoading, statistics, formError };
 };

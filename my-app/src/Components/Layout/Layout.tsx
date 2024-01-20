@@ -9,7 +9,7 @@ import Footer from "../Footer/Footer";
 import { Outlet } from "react-router-dom";
 
 export const Layout: React.FC = () => {
-  const { bikesList, error } = useAllSelectors();
+  const { bikesList } = useAllSelectors();
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -18,9 +18,11 @@ export const Layout: React.FC = () => {
   return (
     <div className="h-full flex flex-col">
       <Header />
-      {error ? <p>{error}</p> : null}
+
       <Suspense fallback={<p>Loading...</p>}>
-        <Outlet />
+        <main className="flex-auto flex">
+          <Outlet />
+        </main>
       </Suspense>
       <Footer />
     </div>

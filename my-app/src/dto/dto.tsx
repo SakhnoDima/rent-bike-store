@@ -12,7 +12,7 @@ export interface IFormInitValues {
   name: string;
   type: string;
   color: string;
-  wheelSize: number;
+  location: string;
   price: number;
   id: string;
   description: string;

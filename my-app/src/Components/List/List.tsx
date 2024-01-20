@@ -6,7 +6,8 @@ import { useAllSelectors } from "../../hooks/useAllSelectors";
 import { sortArr } from "../../helpers";
 
 const List: React.FC<{}> = () => {
-  const { bikesList, isLoading } = useAllSelectors();
+  const { bikesList, isLoading, formError } = useAllSelectors();
+
   const dispatch = useAppDispatch();
 
   const sortedBikeList = sortArr(bikesList);
@@ -17,9 +18,10 @@ const List: React.FC<{}> = () => {
 
   return (
     <>
+      {formError ? <p>{formError}</p> : null}
       {isLoading ? (
         <p className=" w-[618px] text-center">Loading...</p>
-      ) : (
+      ) : sortedBikeList.length > 0 ? (
         <div className="flex flex-col gap-[12px]">
           {sortedBikeList?.map(
             ({ name, type, color, id, status, price, _id }) => (
@@ -36,6 +38,8 @@ const List: React.FC<{}> = () => {
             )
           )}
         </div>
+      ) : (
+        <p className={` w-[618px] text-center`}>Pleas add your firs bike</p>
       )}
     </>
   );

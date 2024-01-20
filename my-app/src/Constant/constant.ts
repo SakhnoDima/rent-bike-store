@@ -4,25 +4,43 @@ export const inputs = [
   {
     inputName: "name",
     placeholder: "Name",
+    as: "input",
   },
   {
     inputName: "type",
-    placeholder: "Type",
+
+    as: "select",
   },
   {
     inputName: "color",
     placeholder: "Color",
+    as: "input",
   },
   {
-    inputName: "wheelSize",
-    placeholder: "Wheel Size",
+    inputName: "location",
+    placeholder: "Location",
+    as: "input",
   },
   {
     inputName: "price",
     placeholder: "Price",
+    as: "input",
   },
   {
     inputName: "id",
     placeholder: "ID",
+    as: "input",
   },
+];
+
+export const bikeType = [
+  "For Adult",
+  "For Teenagers",
+  "For Kids",
+  "BMX",
+  "Electric Bike",
+  "Fatbike",
+  "Speed bike",
+  "Mountain bike",
+  "Road bike",
 ];

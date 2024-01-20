@@ -6,6 +6,7 @@ const numberStyle = "font-bold ml-[3px]";
 
 const Statistics: React.FC<{}> = () => {
   const { statistics } = useAllSelectors();
+
   return (
     <div className="flex flex-col gap-[5px] border-t-[1px] border-[#C4C4C4] pt-[10px]">
       <p className={textStyle}>
@@ -20,7 +21,10 @@ const Statistics: React.FC<{}> = () => {
       </p>
       <p className={textStyle}>
         Average bike cost:
-        <span className={numberStyle}>{statistics.avg.toFixed(2)}</span> UAH/hr.
+        <span className={numberStyle}>
+          {statistics.avg === null ? 0 : statistics.avg?.toFixed(2)}
+        </span>{" "}
+        UAH/hr.
       </p>
     </div>
   );

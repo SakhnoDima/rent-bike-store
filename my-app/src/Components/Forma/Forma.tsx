@@ -1,7 +1,8 @@
 import React from "react";
 import { Field, Form, Formik } from "formik";
 import uniqid from "uniqid";
-import { SignupSchema } from "../../Constant";
+
+import { SignupSchema, bikeType } from "../../Constant";
 import { inputs } from "../../Constant";
 import Button, { ButtonType } from "../Button/Button";
 import { useAppDispatch } from "../../hooks/hooks";
@@ -14,18 +15,19 @@ const Forma: React.FC<{}> = () => {
   const dispatch = useAppDispatch();
   const initialValues = {
     name: "",
-    type: "",
+    type: "For Adult",
     color: "",
-    wheelSize: "",
+    location: "",
     price: "",
     id: uniqid(),
     desc: "",
   };
+
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={SignupSchema}
-      onSubmit={(values) => {
+      onSubmit={(values, { resetForm }) => {
         dispatch(
           addBike({
             name: values.name,
@@ -33,11 +35,11 @@ const Forma: React.FC<{}> = () => {
             color: values.color,
             id: values.id,
             price: +Number(values.price).toFixed(2),
-            wheelSize: Number(values.wheelSize),
+            location: values.location,
             description: values.desc,
           })
         );
-
+        resetForm();
         // actions.setSubmitting(false);
       }}
     >
@@ -46,12 +48,29 @@ const Forma: React.FC<{}> = () => {
           <div className="w-[481px] flex flex-wrap gap-x-[11px] gap-y-[10px] ">
             {inputs.map((item) => (
               <div className="relative" key={item.inputName}>
-                <Field
-                  className={inputStyle}
-                  name={item.inputName}
-                  required
-                  placeholder={item.placeholder}
-                />
+                {item.as === "input" ? (
+                  <Field
+                    as={item.as}
+                    className={inputStyle}
+                    name={item.inputName}
+                    required
+                    placeholder={item.placeholder}
+                  />
+                ) : (
+                  <Field
+                    as={item.as}
+                    className={inputStyle}
+                    name={item.inputName}
+                    required
+                    placeholder={item.placeholder}
+                  >
+                    {bikeType.map((item, indx) => (
+                      <option key={indx} value={item}>
+                        {item}
+                      </option>
+                    ))}
+                  </Field>
+                )}
                 {Object.keys(errors).includes(item.inputName) &&
                 Object.keys(touched).includes(item.inputName) ? (
                   <p className="text-xs text-red-600 text-center mt-[2px] absolute top-[5px] right-[16px]">
@@ -66,12 +85,25 @@ const Forma: React.FC<{}> = () => {
               </div>
             ))}
           </div>
-          <Field
-            as="textarea"
-            className={` w-[100%] px-[16px] py-[5px] bg-gray-color rounded-[5px] placeholder:font-main placeholder:text-sm placeholder:font-normal my-[10px] h-[75px] resize-none`}
-            name="desc"
-            placeholder="Description"
-          />
+          <div className=" h-[75px] my-[10px] relative ">
+            <Field
+              as="textarea"
+              className={` w-[100%] px-[16px] py-[5px] bg-gray-color rounded-[5px] placeholder:font-main placeholder:text-sm placeholder:font-normal  h-[75px] resize-none `}
+              name="desc"
+              placeholder="Description"
+            />
+            {Object.keys(errors).includes("desc") &&
+            Object.keys(touched).includes("desc") ? (
+              <p className="text-xs text-red-600 text-center absolute top-[5px] right-[16px]">
+                {Object.entries(errors).map((el) => {
+                  if (el[0] !== "desc") {
+                    return null;
+                  }
+                  return el[1];
+                })}
+              </p>
+            ) : null}
+          </div>
 
           <div className="flex flex-row gap-[11px]">
             <Button type={ButtonType.SUBMIT} name="SAVE" />
