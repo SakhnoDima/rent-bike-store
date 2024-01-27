@@ -6,6 +6,7 @@ module.exports = {
       fontFamily: {
         header: ['"Saira Stencil One"'],
         main: ['"Saira"'],
+        poppins: ["Poppins"],
       },
       colors: {
         "gray-color": "#E8E8E8",

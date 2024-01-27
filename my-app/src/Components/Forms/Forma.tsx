@@ -2,7 +2,7 @@ import React from "react";
 import { Field, Form, Formik } from "formik";
 import uniqid from "uniqid";
 
-import { SignupSchema, bikeType } from "../../Constant";
+import { bikeType, dataSchema } from "../../Constant";
 import { inputs } from "../../Constant";
 import Button, { ButtonType } from "../Button/Button";
 import { useAppDispatch } from "../../hooks/hooks";
@@ -26,7 +26,7 @@ const Forma: React.FC<{}> = () => {
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={SignupSchema}
+      validationSchema={dataSchema}
       onSubmit={(values, { resetForm }) => {
         dispatch(
           addBike({
@@ -106,8 +106,8 @@ const Forma: React.FC<{}> = () => {
           </div>
 
           <div className="flex flex-row gap-[11px]">
-            <Button type={ButtonType.SUBMIT} name="SAVE" />
-            <Button type={ButtonType.RESET} name="CLEAR" />
+            <Button prime={false} type={ButtonType.SUBMIT} name="SAVE" />
+            <Button prime={false} type={ButtonType.RESET} name="CLEAR" />
           </div>
         </Form>
       )}

@@ -3,10 +3,16 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Saira+Stencil+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Saira:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
 html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+input,
+textarea {
+  outline: none;
 }

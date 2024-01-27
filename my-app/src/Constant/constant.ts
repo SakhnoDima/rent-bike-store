@@ -8,7 +8,6 @@ export const inputs = [
   },
   {
     inputName: "type",
-
     as: "select",
   },
   {
@@ -43,4 +42,17 @@ export const bikeType = [
   "Speed bike",
   "Mountain bike",
   "Road bike",
+];
+
+export const authInputs = [
+  {
+    inputName: "email",
+    placeholder: "Email",
+    as: "input",
+  },
+  {
+    inputName: "password",
+    placeholder: "Password",
+    as: "input",
+  },
 ];
