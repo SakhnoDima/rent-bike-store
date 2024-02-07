@@ -4,8 +4,11 @@ import { AuthSchema, authInputs } from "../../Constant";
 
 import Button, { ButtonType } from "../Button/Button";
 import { inputValidator } from "../../utils/inputValidator";
+import { useAppDispatch } from "../../hooks/hooks";
+import { register } from "../../redux/auth/authThunk";
 
 export const AuthorizationForm: React.FC<{}> = () => {
+  const dispatch = useAppDispatch();
   const initialValues = {
     email: "",
     password: "",
@@ -18,6 +21,12 @@ export const AuthorizationForm: React.FC<{}> = () => {
       onSubmit={(values, { resetForm }) => {
         console.log(values);
 
+        dispatch(
+          register({
+            email: values.email,
+            password: values.password,
+          })
+        );
         resetForm();
       }}
     >

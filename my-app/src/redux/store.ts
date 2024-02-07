@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { bikeSliceReducer } from "./bikeSlice";
+import { authSliceReducer } from "./auth/authSlice";
 
 export const store = configureStore({
   reducer: {
     bikes: bikeSliceReducer,
+    user: authSliceReducer,
   },
 });
 
