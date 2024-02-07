@@ -56,3 +56,5 @@ export const authInputs = [
     as: "input",
   },
 ];
+
+export const BASE_URL = "https://bike-backend-h9xy.onrender.com/";

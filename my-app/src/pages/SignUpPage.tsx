@@ -22,7 +22,7 @@ export const SignUpPage: React.FC = () => {
         </Link>
       </p>
 
-      <AuthorizationForm />
+      <AuthorizationForm action={"register"} />
     </div>
   );
 };

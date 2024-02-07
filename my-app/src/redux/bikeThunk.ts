@@ -9,9 +9,10 @@ import {
   IStatistics,
   IUpdateBikeStatus,
 } from "../dto/dto";
+import { BASE_URL } from "../Constant";
 
 const instance = axios.create({
-  baseURL: "https://bike-backend-h9xy.onrender.com/",
+  baseURL: BASE_URL,
   headers: {},
 });
 

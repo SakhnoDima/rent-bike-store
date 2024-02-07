@@ -5,9 +5,13 @@ import { AuthSchema, authInputs } from "../../Constant";
 import Button, { ButtonType } from "../Button/Button";
 import { inputValidator } from "../../utils/inputValidator";
 import { useAppDispatch } from "../../hooks/hooks";
-import { register } from "../../redux/auth/authThunk";
+import { logIn, register } from "../../redux/auth/authThunk";
 
-export const AuthorizationForm: React.FC<{}> = () => {
+interface IAuthorizationForm {
+  action: "login" | "register";
+}
+
+export const AuthorizationForm: React.FC<IAuthorizationForm> = ({ action }) => {
   const dispatch = useAppDispatch();
   const initialValues = {
     email: "",
@@ -19,14 +23,27 @@ export const AuthorizationForm: React.FC<{}> = () => {
       initialValues={initialValues}
       validationSchema={AuthSchema}
       onSubmit={(values, { resetForm }) => {
-        console.log(values);
+        switch (action) {
+          case "register":
+            dispatch(
+              register({
+                email: values.email,
+                password: values.password,
+              })
+            );
+            break;
+          case "login":
+            dispatch(
+              logIn({
+                email: values.email,
+                password: values.password,
+              })
+            );
+            break;
+          default:
+            break;
+        }
 
-        dispatch(
-          register({
-            email: values.email,
-            password: values.password,
-          })
-        );
         resetForm();
       }}
     >
