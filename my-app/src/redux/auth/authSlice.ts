@@ -6,6 +6,7 @@ type IInitState = {
   token: string;
   isLoading: boolean;
   error: string | null;
+  isAuth: Boolean;
 };
 
 const initialState: IInitState = {
@@ -13,7 +14,10 @@ const initialState: IInitState = {
   token: "",
   isLoading: false,
   error: "",
+  isAuth: false,
 };
+
+const rejectedAuthCase = () => ({ ...initialState });
 
 export const authSlice = createSlice({
   name: "bikes",
@@ -37,7 +41,9 @@ export const authSlice = createSlice({
         state.email = action.payload.email;
         state.token = action.payload.token;
         state.isLoading = false;
-      });
+        state.isAuth = true;
+      })
+      .addCase(logIn.rejected, rejectedAuthCase);
   },
 });
 

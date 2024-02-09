@@ -1,3 +1,5 @@
+import { createSelector } from "@reduxjs/toolkit";
+
 import { useAppSelector } from "./hooks";
 import { RootState } from "../redux/store";
 
@@ -9,5 +11,14 @@ export const useAllSelectors = () => {
     (state: RootState) => state.bikes.statistics
   );
 
-  return { bikesList, isLoading, statistics, formError };
+  // ==
+  const tokenSelect = (state: RootState) => state.user.token;
+  const isAuthSelect = (state: RootState) => state.user.isAuth;
+  const selectIsAuth = createSelector(
+    [isAuthSelect, tokenSelect],
+    (isAuth: Boolean, token: string) => (token && isAuth ? true : false)
+  );
+  const isAuth = useAppSelector(selectIsAuth);
+
+  return { bikesList, isLoading, statistics, formError, isAuth };
 };

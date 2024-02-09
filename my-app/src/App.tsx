@@ -6,6 +6,7 @@ import { routes } from "./Constant";
 import { HomePage, SignInPage, SignUpPage } from "./pages";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { AddBike } from "./pages/AddBikePage";
+import PrivateRout from "./Components/Routes/PrivateRout";
 
 const App: React.FC = () => {
   return (
@@ -14,7 +15,14 @@ const App: React.FC = () => {
         <Route index element={<HomePage />} />
         <Route path={routes.SignIn} element={<SignInPage />} />
         <Route path={routes.SignUp} element={<SignUpPage />} />
-        <Route path={routes.AddBike} element={<AddBike />} />
+        <Route
+          path={routes.AddBike}
+          element={
+            <PrivateRout navigate={routes.Home}>
+              <AddBike />
+            </PrivateRout>
+          }
+        />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
